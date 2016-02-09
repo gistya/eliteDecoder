@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948C31C6A2A4100DD918B /* AppDelegate.swift */; };
+		EE0948C61C6A2A4100DD918B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948C51C6A2A4100DD918B /* ViewController.swift */; };
+		EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0948C71C6A2A4100DD918B /* Main.storyboard */; };
+		EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */; };
+		EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0948CD1C6A2A4100DD918B /* Assets.xcassets */; };
+		EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */; };
+		EE0948DC1C6A2A4100DD918B /* eliteDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */; };
+		EE0948E71C6A2A4100DD918B /* eliteDecoderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE0948D81C6A2A4100DD918B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0948B81C6A2A4100DD918B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE0948BF1C6A2A4100DD918B;
+			remoteInfo = eliteDecoder;
+		};
+		EE0948E31C6A2A4100DD918B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0948B81C6A2A4100DD918B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE0948BF1C6A2A4100DD918B;
+			remoteInfo = eliteDecoder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EE0948C01C6A2A4100DD918B /* eliteDecoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eliteDecoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0948C31C6A2A4100DD918B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE0948C51C6A2A4100DD918B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE0948C81C6A2A4100DD918B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eliteDecoder.xcdatamodel; sourceTree = "<group>"; };
+		EE0948CD1C6A2A4100DD918B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE0948D01C6A2A4100DD918B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE0948D21C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0948D71C6A2A4100DD918B /* eliteDecoderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eliteDecoderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eliteDecoderTests.swift; sourceTree = "<group>"; };
+		EE0948DD1C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0948E21C6A2A4100DD918B /* eliteDecoderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eliteDecoderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eliteDecoderUITests.swift; sourceTree = "<group>"; };
+		EE0948E81C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE0948BD1C6A2A4100DD918B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948D41C6A2A4100DD918B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948DF1C6A2A4100DD918B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE0948B71C6A2A4100DD918B = {
+			isa = PBXGroup;
+			children = (
+				EE0948C21C6A2A4100DD918B /* eliteDecoder */,
+				EE0948DA1C6A2A4100DD918B /* eliteDecoderTests */,
+				EE0948E51C6A2A4100DD918B /* eliteDecoderUITests */,
+				EE0948C11C6A2A4100DD918B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE0948C11C6A2A4100DD918B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE0948C01C6A2A4100DD918B /* eliteDecoder.app */,
+				EE0948D71C6A2A4100DD918B /* eliteDecoderTests.xctest */,
+				EE0948E21C6A2A4100DD918B /* eliteDecoderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE0948C21C6A2A4100DD918B /* eliteDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				EE0948C31C6A2A4100DD918B /* AppDelegate.swift */,
+				EE0948C51C6A2A4100DD918B /* ViewController.swift */,
+				EE0948C71C6A2A4100DD918B /* Main.storyboard */,
+				EE0948CD1C6A2A4100DD918B /* Assets.xcassets */,
+				EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */,
+				EE0948D21C6A2A4100DD918B /* Info.plist */,
+				EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */,
+			);
+			path = eliteDecoder;
+			sourceTree = "<group>";
+		};
+		EE0948DA1C6A2A4100DD918B /* eliteDecoderTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */,
+				EE0948DD1C6A2A4100DD918B /* Info.plist */,
+			);
+			path = eliteDecoderTests;
+			sourceTree = "<group>";
+		};
+		EE0948E51C6A2A4100DD918B /* eliteDecoderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */,
+				EE0948E81C6A2A4100DD918B /* Info.plist */,
+			);
+			path = eliteDecoderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE0948BF1C6A2A4100DD918B /* eliteDecoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0948EB1C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoder" */;
+			buildPhases = (
+				EE0948BC1C6A2A4100DD918B /* Sources */,
+				EE0948BD1C6A2A4100DD918B /* Frameworks */,
+				EE0948BE1C6A2A4100DD918B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = eliteDecoder;
+			productName = eliteDecoder;
+			productReference = EE0948C01C6A2A4100DD918B /* eliteDecoder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE0948D61C6A2A4100DD918B /* eliteDecoderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0948EE1C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderTests" */;
+			buildPhases = (
+				EE0948D31C6A2A4100DD918B /* Sources */,
+				EE0948D41C6A2A4100DD918B /* Frameworks */,
+				EE0948D51C6A2A4100DD918B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE0948D91C6A2A4100DD918B /* PBXTargetDependency */,
+			);
+			name = eliteDecoderTests;
+			productName = eliteDecoderTests;
+			productReference = EE0948D71C6A2A4100DD918B /* eliteDecoderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE0948E11C6A2A4100DD918B /* eliteDecoderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0948F11C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderUITests" */;
+			buildPhases = (
+				EE0948DE1C6A2A4100DD918B /* Sources */,
+				EE0948DF1C6A2A4100DD918B /* Frameworks */,
+				EE0948E01C6A2A4100DD918B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE0948E41C6A2A4100DD918B /* PBXTargetDependency */,
+			);
+			name = eliteDecoderUITests;
+			productName = eliteDecoderUITests;
+			productReference = EE0948E21C6A2A4100DD918B /* eliteDecoderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE0948B81C6A2A4100DD918B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Jon Gilbert";
+				TargetAttributes = {
+					EE0948BF1C6A2A4100DD918B = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					EE0948D61C6A2A4100DD918B = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = EE0948BF1C6A2A4100DD918B;
+					};
+					EE0948E11C6A2A4100DD918B = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = EE0948BF1C6A2A4100DD918B;
+					};
+				};
+			};
+			buildConfigurationList = EE0948BB1C6A2A4100DD918B /* Build configuration list for PBXProject "eliteDecoder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE0948B71C6A2A4100DD918B;
+			productRefGroup = EE0948C11C6A2A4100DD918B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE0948BF1C6A2A4100DD918B /* eliteDecoder */,
+				EE0948D61C6A2A4100DD918B /* eliteDecoderTests */,
+				EE0948E11C6A2A4100DD918B /* eliteDecoderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE0948BE1C6A2A4100DD918B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */,
+				EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */,
+				EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948D51C6A2A4100DD918B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948E01C6A2A4100DD918B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE0948BC1C6A2A4100DD918B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0948C61C6A2A4100DD918B /* ViewController.swift in Sources */,
+				EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */,
+				EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948D31C6A2A4100DD918B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0948DC1C6A2A4100DD918B /* eliteDecoderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0948DE1C6A2A4100DD918B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0948E71C6A2A4100DD918B /* eliteDecoderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE0948D91C6A2A4100DD918B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE0948BF1C6A2A4100DD918B /* eliteDecoder */;
+			targetProxy = EE0948D81C6A2A4100DD918B /* PBXContainerItemProxy */;
+		};
+		EE0948E41C6A2A4100DD918B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE0948BF1C6A2A4100DD918B /* eliteDecoder */;
+			targetProxy = EE0948E31C6A2A4100DD918B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE0948C71C6A2A4100DD918B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0948C81C6A2A4100DD918B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0948D01C6A2A4100DD918B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE0948E91C6A2A4100DD918B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE0948EA1C6A2A4100DD918B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE0948EC1C6A2A4100DD918B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = eliteDecoder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE0948ED1C6A2A4100DD918B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = eliteDecoder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EE0948EF1C6A2A4100DD918B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = eliteDecoderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eliteDecoder.app/eliteDecoder";
+			};
+			name = Debug;
+		};
+		EE0948F01C6A2A4100DD918B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = eliteDecoderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eliteDecoder.app/eliteDecoder";
+			};
+			name = Release;
+		};
+		EE0948F21C6A2A4100DD918B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = eliteDecoderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = eliteDecoder;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EE0948F31C6A2A4100DD918B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = eliteDecoderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = eliteDecoder;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE0948BB1C6A2A4100DD918B /* Build configuration list for PBXProject "eliteDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0948E91C6A2A4100DD918B /* Debug */,
+				EE0948EA1C6A2A4100DD918B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0948EB1C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0948EC1C6A2A4100DD918B /* Debug */,
+				EE0948ED1C6A2A4100DD918B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EE0948EE1C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0948EF1C6A2A4100DD918B /* Debug */,
+				EE0948F01C6A2A4100DD918B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EE0948F11C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0948F21C6A2A4100DD918B /* Debug */,
+				EE0948F31C6A2A4100DD918B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */,
+			);
+			currentVersion = EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */;
+			path = eliteDecoder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EE0948B81C6A2A4100DD918B /* Project object */;
+}
