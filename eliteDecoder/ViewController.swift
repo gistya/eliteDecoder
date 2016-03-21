@@ -89,8 +89,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         else {
             
             let letterValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Za-z]")
-            let starValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Ha-h]")
-            let bigStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[E-He-h]")
             let efStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[E-Fe-f]")
             let ghStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[G-Hg-h]")
             let numberValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]")
@@ -208,6 +206,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 }
             }
             
+            func delete(size:Int) {
+                let start:String.CharacterView.Index.Distance = range.location - size
+                let end:String.CharacterView.Index.Distance = (textField.text?.characters.count)!
+                let rangeToRemove = (textField.text?.startIndex.advancedBy(start))! ..< (textField.text?.startIndex.advancedBy(end))!
+                textField.text?.removeRange(rangeToRemove)
+            }
+            
             /* do some coool autocomplete :D */
             if(textField.text?.characters.count == 5 && string != "") {
                 return autocomplete()
@@ -217,13 +222,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 if lookup("\(textField.text!)\(string)") {
                     return false
                 }
-            }
-            
-            func delete(size:Int) {
-                let start:String.CharacterView.Index.Distance = range.location - size
-                let end:String.CharacterView.Index.Distance = (textField.text?.characters.count)!
-                let rangeToRemove = (textField.text?.startIndex.advancedBy(start))! ..< (textField.text?.startIndex.advancedBy(end))!
-                textField.text?.removeRange(rangeToRemove)
             }
             
             /* if the user pressed backspace delete the text after the insertion point */
