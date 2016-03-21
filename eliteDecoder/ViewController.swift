@@ -19,7 +19,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var candidatesTable: UITableView!
     @IBOutlet var infoView: UIView!
+    var tableTitle:String = ""
     var candidates:[String] = []
+    let numberValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]")
+    let abcValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Ca-c]")
     
     var activeTextField: LeetTextField?
     
@@ -54,6 +57,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        candidatesTable.hidden = true
+        self.setDoneButton()
         self.doneButton.enabled = true
         self.doneButton.alpha = 1.0
         return true
@@ -91,7 +96,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             let letterValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Za-z]")
             let efStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[E-Fe-f]")
             let ghStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[G-Hg-h]")
-            let numberValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]")
             
             func setKeyboard() {
                 if(textField.text?.characters.count > 5 && candidatesTable.hidden) {
@@ -118,6 +122,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 }
                 else {
                     self.reverseResult.text = "please enter a sector name"
+                    
                 }
                 setKeyboard()
             }
@@ -138,6 +143,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     decoded = self.reverseResult.text!
                     if(numberValidator.evaluateWithObject(decoded[0])) {
                         textField.text = name.stringByAppendingString("-")
+                        self.reverse(name)
                         return true
                     }
                 }
@@ -187,8 +193,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                         return false
                     }
                     else if(candidates.count > 1) {
+                        self.tableTitle = "Autocomplete Results"
                         candidatesTable.hidden = false
                         candidatesTable.reloadData()
+                        
                         textField.resignFirstResponder()
                         textField.text = original
                         textField.text?.appendContentsOf(string)
@@ -201,6 +209,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 }
                 else {
                     textField.text?.appendContentsOf(string)
+                    self.reverse(textField.text!)
                     setKeyboard()
                     return false
                 }
@@ -219,6 +228,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             }
             
             if(textField.text?.characters.count > 5 && string != "") {
+                if(string.characters.count > 5) {
+                    if lookup(string) {
+                        return false
+                    }
+                }
                 if lookup("\(textField.text!)\(string)") {
                     return false
                 }
@@ -321,8 +335,63 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
     }
     
+    func setDoneButton() {
+        if(self.numberValidator.evaluateWithObject(reverseResult.text![0]) && ssName.text!.characters.count > 5) {
+            let starType:String = ssName.text![5]
+            if(self.abcValidator.evaluateWithObject(starType)) {
+                self.doneButton.setTitle("       Nearby Zones", forState: UIControlState.Normal);
+            }
+            else {
+                self.doneButton.setTitle("                           Done", forState: UIControlState.Normal);
+            }
+        }
+        else {
+            self.doneButton.setTitle("                           Done", forState: UIControlState.Normal);
+        }
+    }
+    
     func reverse(text:String) {
         reverseResult.text = Decoder.parse_reverse(text)
+        self.setDoneButton()
+    }
+    
+    func findNearbys() {
+        let starType:String = ssName.text![5]
+        if(!self.abcValidator.evaluateWithObject(starType)) {
+            return; //kinda pointless to lookup nearbys for stars with big zones
+        }
+        let possibleStarTypes:String = "ABCDEFGH"
+        self.candidates = [String]()
+        for aStarType:Character in possibleStarTypes.characters {
+            let myStarType:String = String.init(aStarType)
+            if(myStarType == starType.uppercaseString) {
+                continue
+            }
+            let coords:String = self.reverseResult.text!
+            let rangesArray:[String] = coords.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: ","))
+            var lookupCoords = [String]()
+            for range:String in rangesArray {
+                let myRanges:[String] = range.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: "-"))
+                let lowRange:Int = Int(myRanges[0])!
+                let hiRange:Int  = Int(myRanges[1])!
+                var diff:Int = hiRange - lowRange
+                diff = diff/2
+                lookupCoords.append("\(lowRange+diff)")
+            }
+            let ew = lookupCoords[0]
+            let ud = lookupCoords[1]
+            let ns = lookupCoords[2]
+            let lc = myStarType
+            
+            let find = "\(ew),\(ud),\(ns),\(lc)"
+            let candidate = Decoder.parse_finder(find)
+            candidates.append(candidate)
+        }
+        if(Bool(self.candidates.count)) {
+            self.tableTitle = "Nearby Zones"
+            candidatesTable.hidden = false
+            candidatesTable.reloadData()
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -339,6 +408,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         self.doneButton.enabled = false
         self.doneButton.alpha = 0.0
+        if(self.doneButton.titleLabel!.text!.containsString("Nearby Zones")) {
+            self.findNearbys()
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -353,15 +425,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let selection:String = self.candidates[indexPath.row]
-        self.ssName.text = selection
-        self.reverse(selection)
+        self.textField(ssName, shouldChangeCharactersInRange:NSRange.init(location: 0, length: self.ssName.text!.characters.count), replacementString: selection)
+        //self.reverse(selection)
         self.candidatesTable.hidden = true
         self.ssName.becomeFirstResponder()
         return(indexPath)
     }
-    
-//    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
@@ -370,6 +439,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         else {
             return 0
         }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.tableTitle
     }
 }
 

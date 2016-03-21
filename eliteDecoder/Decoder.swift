@@ -22,6 +22,9 @@ extension String {
     }
     
     subscript (i: Int) -> String {
+        if(self.characters.count <= i) {
+            return ""
+        }
         return String(self[i] as Character)
     }
     
@@ -56,7 +59,7 @@ public class Decoder: NSObject {
         lettercode = lettercode.uppercaseString;
         
         if lettercode == "H" {
-            return "AA-A H1-(system code)"
+            return "AA-A H#"
         }
         else if lettercode == "G" {
             cubeside = 640
@@ -120,10 +123,10 @@ public class Decoder: NSObject {
         
         
         if number != 0 {
-            text = "\(first)\(second)-\(third) \(lettercode)\(number)-#"
+            text = "\(first)\(second)-\(third) \(lettercode)\(number)-"
         }
         else {
-            text = "\(first)\(second)-\(third) \(lettercode)#"
+            text = "\(first)\(second)-\(third) \(lettercode)"
         }
         return text
 //        return "System name for these coordinates: [Sector Name] \(text)"
@@ -214,12 +217,11 @@ public class Decoder: NSObject {
     public static func parse_reverse(var input:String) -> String {
         
         //FIXME: This returns out of bounds until a hyphen is on the end for ones that need a hyphen; how about checking first to see if a hyphen would fix it and if so assume it's there?
-        
-        if input.characters.count < 5 {
-            return "error: invalid input"
-        }
         input.removeAtIndex(input.startIndex.advancedBy(2)) //remove first hyphen
         input = input.stringByReplacingOccurrencesOfString(" ", withString: "")
+        if input.characters.count < 4 {
+            return "error: invalid input"
+        }
         if(input.containsString("-")) { //ignore stuff after second hyphen
             let array = input.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: "-"))
             input = array[0]
