@@ -95,6 +95,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             let ghStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[G-Hg-h]")
             let numberValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]")
             
+            func setKeyboard() {
+                if(textField.text?.characters.count > 5 && candidatesTable.hidden) {
+                    textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                    textField.resignFirstResponder()
+                    textField.becomeFirstResponder()
+                }
+                else if(candidatesTable.hidden) {
+                    textField.keyboardType = UIKeyboardType.Default
+                    textField.resignFirstResponder()
+                    textField.becomeFirstResponder()
+                }
+            }
+            
             func reverse() {
                 if(textField.text?.characters.count > 6) {
                     self.reverse(textField.text!)
@@ -108,20 +121,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 else {
                     self.reverseResult.text = "please enter a sector name"
                 }
-                if(textField.text?.characters.count > 5 && candidatesTable.hidden) {
-                    textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
-                    textField.resignFirstResponder()
-                    textField.becomeFirstResponder()
-                }
-                else if(candidatesTable.hidden) {
-                    textField.keyboardType = UIKeyboardType.Default
-                    textField.resignFirstResponder()
-                    textField.becomeFirstResponder()
-                }
+                setKeyboard()
             }
             
             func lookup(name:String)->Bool {
-                var decoded:String = Decoder.parse_reverse(name);
+                let original = self.reverseResult.text!
+                self.reverse(name)
+                var decoded:String = self.reverseResult.text!
                 if(numberValidator.evaluateWithObject(decoded[0])) {
                     if(name[6] != "0") {
                         textField.text? = name
@@ -130,17 +136,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     return true
                 }
                 else if(decoded == "out of bounds for 1280 LY cube") {
-                    decoded = Decoder.parse_reverse("\(name.stringByAppendingString("-"))");
+                    self.reverse("\(name.stringByAppendingString("-"))")
+                    decoded = self.reverseResult.text!
                     if(numberValidator.evaluateWithObject(decoded[0])) {
                         textField.text = name.stringByAppendingString("-")
-                        self.reverseResult.text = decoded
                         return true
                     }
                 }
+                self.reverseResult.text = original
                 return false
             }
             
-            if(textField.text?.characters.count == 5 && string != "") {
+            func autocomplete() -> Bool {
                 if !(lookup("\(textField.text!)\(string)0")) {
                     let starType:String = string
                     var factor = 128
@@ -178,6 +185,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                         }
                     }
                     if(self.candidates.count == 1) {
+                        setKeyboard()
                         return false
                     }
                     else if(candidates.count > 1) {
@@ -185,6 +193,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                         candidatesTable.reloadData()
                         textField.resignFirstResponder()
                         textField.text = original
+                        textField.text?.appendContentsOf(string)
+                        reverse()
+                        return false
                     }
                     else {
                         return false
@@ -192,8 +203,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 }
                 else {
                     textField.text?.appendContentsOf(string)
+                    setKeyboard()
                     return false
                 }
+            }
+            
+            /* do some coool autocomplete :D */
+            if(textField.text?.characters.count == 5 && string != "") {
+                return autocomplete()
             }
             
             if(textField.text?.characters.count > 5 && string != "") {
@@ -216,6 +233,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     delete(1)
                     reverse()
                     return false
+                case 6:
+                    delete(0)
+                    return autocomplete()
                 case 7:
                     let starType:String = ssName.text![5]
                     if(efStarValidator.evaluateWithObject(starType)) {
@@ -267,36 +287,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     reverse()
                 }
                 return false
-////            case 6:
-////                let starType:String = ssName.text![5]
-////                /* for mass E and F, there are only single digit sectors */
-////                if(starType.uppercaseString == "F") {
-////                    if(numberValidator.evaluateWithObject(string)) {
-////                        if(Int(string) > 2) {
-////                            textField.text?.appendContentsOf("-" + string)
-////                        }
-////                        else {
-////                            textField.text?.appendContentsOf(string)
-////                        }
-////                        reverse()
-////                    }
-////                }
-////                else if(starType.uppercaseString == "E") {
-////                    if(numberValidator.evaluateWithObject(string)) {
-////                        if(Int(string) > 6) {
-////                            textField.text?.appendContentsOf("-" + string)
-////                        }
-////                        else {
-////                            textField.text?.appendContentsOf(string)
-////                        }
-////                        reverse()
-////                    }
-////                }
-////                else if(numberValidator.evaluateWithObject(string)) {
-////                    textField.text?.appendContentsOf(string)
-////                    reverse()
-////                }
-////                return false
             case 7:
                 let starType:String = ssName.text![5]
                 let firstDigit:Int = Int(ssName.text![6])!
@@ -311,14 +301,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     reverse()
                 }
                 return false
-//            case 8:
-//                let starType:String = ssName.text![5]
-//                let firstDigit:Int = Int(ssName.text![6])!
-//                if(string == "-" && !(starType.uppercaseString == "D" && firstDigit > 1) && !(bigStarValidator.evaluateWithObject(starType))) {
-//                    textField.text?.appendContentsOf(string)
-//                    reverse()
-//                }
-//                return false
             default:
                 reverse()
                 return false
