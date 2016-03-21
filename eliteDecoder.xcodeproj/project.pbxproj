@@ -15,6 +15,8 @@
 		EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */; };
 		EE0948DC1C6A2A4100DD918B /* eliteDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */; };
 		EE0948E71C6A2A4100DD918B /* eliteDecoderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */; };
+		EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948F41C6A2A6300DD918B /* Decoder.swift */; };
+		EE0948F71C6B107500DD918B /* Screenshot-Original.png in Resources */ = {isa = PBXBuildFile; fileRef = EE0948F61C6B107500DD918B /* Screenshot-Original.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		EE0948E21C6A2A4100DD918B /* eliteDecoderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eliteDecoderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eliteDecoderUITests.swift; sourceTree = "<group>"; };
 		EE0948E81C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0948F41C6A2A6300DD918B /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		EE0948F61C6B107500DD918B /* Screenshot-Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screenshot-Original.png"; path = "../../../../../Desktop/Screenshot-Original.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,12 @@
 				EE0948C31C6A2A4100DD918B /* AppDelegate.swift */,
 				EE0948C51C6A2A4100DD918B /* ViewController.swift */,
 				EE0948C71C6A2A4100DD918B /* Main.storyboard */,
+				EE0948F61C6B107500DD918B /* Screenshot-Original.png */,
 				EE0948CD1C6A2A4100DD918B /* Assets.xcassets */,
 				EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */,
 				EE0948D21C6A2A4100DD918B /* Info.plist */,
 				EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */,
+				EE0948F41C6A2A6300DD918B /* Decoder.swift */,
 			);
 			path = eliteDecoder;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 			files = (
 				EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */,
 				EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */,
+				EE0948F71C6B107500DD918B /* Screenshot-Original.png in Resources */,
 				EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +268,7 @@
 			files = (
 				EE0948C61C6A2A4100DD918B /* ViewController.swift in Sources */,
 				EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */,
+				EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */,
 				EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
