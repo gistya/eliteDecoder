@@ -28,16 +28,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ewCoord.delegate = self;
-        udCoord.delegate = self;
-        nsCoord.delegate = self;
-        ssName.delegate = self;
-        letterCode.delegate = self;
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if(self.candidatesTable.hidden) {
+            self.candidates = [];
+        }
     }
     
     func csvOutput320x320x80() {

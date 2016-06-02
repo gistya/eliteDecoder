@@ -17,6 +17,7 @@
 		EE0948E71C6A2A4100DD918B /* eliteDecoderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */; };
 		EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948F41C6A2A6300DD918B /* Decoder.swift */; };
 		EE0948F71C6B107500DD918B /* Screenshot-Original.png in Resources */ = {isa = PBXBuildFile; fileRef = EE0948F61C6B107500DD918B /* Screenshot-Original.png */; };
+		EE0D352D1CFFC35E004867A7 /* GoldilocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EE0948E81C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0948F41C6A2A6300DD918B /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		EE0948F61C6B107500DD918B /* Screenshot-Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screenshot-Original.png"; path = "../../../../../Desktop/Screenshot-Original.png"; sourceTree = "<group>"; };
+		EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldilocksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				EE0948C31C6A2A4100DD918B /* AppDelegate.swift */,
 				EE0948C51C6A2A4100DD918B /* ViewController.swift */,
 				EE0948C71C6A2A4100DD918B /* Main.storyboard */,
+				EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */,
 				EE0948F61C6B107500DD918B /* Screenshot-Original.png */,
 				EE0948CD1C6A2A4100DD918B /* Assets.xcassets */,
 				EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */,
 				EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */,
 				EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */,
+				EE0D352D1CFFC35E004867A7 /* GoldilocksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +500,7 @@
 				EE0948ED1C6A2A4100DD918B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE0948EE1C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +509,7 @@
 				EE0948F01C6A2A4100DD918B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE0948F11C6A2A4100DD918B /* Build configuration list for PBXNativeTarget "eliteDecoderUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +518,7 @@
 				EE0948F31C6A2A4100DD918B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
