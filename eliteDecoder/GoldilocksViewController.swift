@@ -45,7 +45,7 @@ class GoldilocksViewController: UIViewController {
     
     let tempCutoffs:[Double] = [3700.0,5200.0,6000.0,7500.0,11000.0,32000.0,120000.0]
     
-    let radiusCutoffs:[Double] = [0.9,1.01,1.24,1.7,2.0,6.0,20.0]
+    let radiusCutoffs:[Double] = [0.699,1.01,1.24,1.7,2.0,6.0,20.0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +121,8 @@ class GoldilocksViewController: UIViewController {
         minTemp = 1540.0
         if(classification != 0) {
             minTemp = tempCutoffs[classification - 1]
-            minRadius = radiusCutoffs[classification - 2]
+            let radiusOffset:Int = classification > 1 ? 2 : 1
+            minRadius = radiusCutoffs[classification - radiusOffset]
         }
     }
     
@@ -182,12 +183,12 @@ class GoldilocksViewController: UIViewController {
     }
     
     @IBAction func incrementRadius(sender: UIButton) {
-        radius += 0.01
+        radius += 0.0001
         recalculate()
     }
     
     @IBAction func decrementRadius(sender: UIButton) {
-        radius -= 0.01
+        radius -= 0.0001
         recalculate()
     }
     
