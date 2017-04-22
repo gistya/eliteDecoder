@@ -10,28 +10,29 @@ import UIKit
 
 let alphabet:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-infix operator ** { }
+infix operator **
 func ** (radix: Int, power: Int) -> Int {
     return Int(pow(Double(radix), Double(power)))
 }
 
 extension String {
     
-    subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
-    }
+//    subscript (i: Int) -> Character {
+//        return self[self.characters.index(self.startIndex, offsetBy: i)]
+//    }
     
     subscript (i: Int) -> String {
         if(self.characters.count <= i) {
             return ""
         }
-        return String(self[i] as Character)
+        let s = self[self.characters.index(self.startIndex, offsetBy: i)]
+        return String([s])
     }
     
-    subscript (r: Range<Int>) -> String {
-        let start = startIndex.advancedBy(r.startIndex)
-        let end = start.advancedBy(r.endIndex - r.startIndex)
-        return self[Range(start: start, end: end)]
+    subscript (r: CountableClosedRange<Int>) -> String {
+        let start = characters.index(startIndex, offsetBy: r.lowerBound)
+        let end = characters.index(start, offsetBy: r.upperBound - r.lowerBound)
+        return self[(start ..< end)]
     }
 }
 
@@ -43,9 +44,10 @@ let biggest = divisor**3
 let rowlength = 128
 let sidelength = rowlength**2
 
-public class Decoder: NSObject {
+open class Decoder: NSObject {
     
-    static func finder(var column:Int,var stack:Int,var row:Int,var lettercode:String) -> String {
+    static func finder(_ column:Int,stack:Int,row:Int,lettercode:String) -> String {
+        var column = column, stack = stack, row = row, lettercode = lettercode
         var cubeside:Int = 0
         var first:String
         var second:String
@@ -56,7 +58,7 @@ public class Decoder: NSObject {
         var working:Int
         var position:Int
         var text:String
-        lettercode = lettercode.uppercaseString;
+        lettercode = lettercode.uppercased();
         
         if lettercode == "H" {
             return "AA-A H#"
@@ -132,7 +134,7 @@ public class Decoder: NSObject {
 //        return "System name for these coordinates: [Sector Name] \(text)"
     }
     
-    static func reverse(first:String,second:String,third:String,lettercode:String,first_number:Int) -> String {
+    static func reverse(_ first:String,second:String,third:String,lettercode:String,first_number:Int) -> String {
         
         //print("\(first)\(second)-\(third) \(lettercode)\(first_number)-#")
         
@@ -214,27 +216,28 @@ public class Decoder: NSObject {
         
     }
     
-    public static func parse_reverse(var input:String) -> String {
+    public static func parse_reverse(_ input:String) -> String {
+        var input = input
         
         //FIXME: This returns out of bounds until a hyphen is on the end for ones that need a hyphen; how about checking first to see if a hyphen would fix it and if so assume it's there?
-        input.removeAtIndex(input.startIndex.advancedBy(2)) //remove first hyphen
-        input = input.stringByReplacingOccurrencesOfString(" ", withString: "")
+        input.remove(at: input.characters.index(input.startIndex, offsetBy: 2)) //remove first hyphen
+        input = input.replacingOccurrences(of: " ", with: "")
         if input.characters.count < 4 {
             return "error: invalid input"
         }
-        if(input.containsString("-")) { //ignore stuff after second hyphen
-            let array = input.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: "-"))
+        if(input.contains("-")) { //ignore stuff after second hyphen
+            let array = input.components(separatedBy: CharacterSet.init(charactersIn: "-"))
             input = array[0]
         }
         else {
             input = "\(input[0...3])0"
         }
-        input = input.uppercaseString
+        input = input.uppercased()
         let first = input[0] as String
         let second = input[1] as String
         let third = input[2] as String
         let lettercode = input[3] as String
-        let first_number:Int? = Int(input.substringFromIndex(input.startIndex.advancedBy(4)))
+        let first_number:Int? = Int(input.substring(from: input.characters.index(input.startIndex, offsetBy: 4)))
         if(first_number != nil) {
             return reverse(first, second: second, third: third, lettercode: lettercode, first_number: first_number!)
         }
@@ -243,9 +246,10 @@ public class Decoder: NSObject {
         }
     }
     
-    public static func parse_finder(var input:String) -> String {
-        input = input.stringByReplacingOccurrencesOfString(" ", withString: "")
-        let coords = input.componentsSeparatedByString(",")
+    public static func parse_finder(_ input:String) -> String {
+        var input = input
+        input = input.replacingOccurrences(of: " ", with: "")
+        let coords = input.components(separatedBy: ",")
         if coords.count < 4 {
             return "error: invalid input"
         }

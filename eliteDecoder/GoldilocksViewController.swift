@@ -59,11 +59,11 @@ class GoldilocksViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func min(median:Double) -> Double {
+    func min(_ median:Double) -> Double {
         return 450.16 * pow(lums,0.4599)
     }
     
-    func max(median:Double) -> Double {
+    func max(_ median:Double) -> Double {
         return median * 1.46
     }
     
@@ -84,7 +84,7 @@ class GoldilocksViewController: UIViewController {
         minLS.text = String(format:"%.0f LS",min(medianLS))
     }
     
-    func radiusSliLog(sliderValue:Double) -> Double {
+    func radiusSliLog(_ sliderValue:Double) -> Double {
     // Input will be between min and max
         let min:Double = 1.0
         let max:Double = 15000.0
@@ -99,7 +99,7 @@ class GoldilocksViewController: UIViewController {
         return exp(minv + (scale * (sliderValue - min)));
     }
     
-    func tempSliLog(sliderValue:Double) -> Double {
+    func tempSliLog(_ sliderValue:Double) -> Double {
         // Input will be between min and max
         let min:Double = 1.0
         let max:Double = 150000.0
@@ -114,7 +114,7 @@ class GoldilocksViewController: UIViewController {
         return exp(minv + (scale * (sliderValue - min)));
     }
     
-    func setStarClass(classification:Int) {
+    func setStarClass(_ classification:Int) {
         maxTemp = tempCutoffs[classification]
         maxRadius = radiusCutoffs[classification]
         minRadius = 0.2
@@ -126,12 +126,12 @@ class GoldilocksViewController: UIViewController {
         }
     }
     
-    @IBAction func radiusSliderChanged(sender: UISlider) {
+    @IBAction func radiusSliderChanged(_ sender: UISlider) {
         if(radiusSliderTimeLastUpdated < -0.1) {
-            radiusSliderTimeLastUpdated = NSDate().timeIntervalSince1970
+            radiusSliderTimeLastUpdated = Date().timeIntervalSince1970
         }
         else {
-            let now:Double = NSDate().timeIntervalSince1970
+            let now:Double = Date().timeIntervalSince1970
             let delta:Double = now - radiusSliderTimeLastUpdated
             if(delta > 1.0) {
                 //radiusSliderLocked = true
@@ -143,18 +143,18 @@ class GoldilocksViewController: UIViewController {
             return;
         }
         radiusSliderLastValue = sender.value
-        radiusSliderTimeLastUpdated = NSDate().timeIntervalSince1970
+        radiusSliderTimeLastUpdated = Date().timeIntervalSince1970
         let sliderValue:Double = Double(sender.value)
         radius = radiusSliLog(sliderValue)
         recalculate()
     }
     
-    @IBAction func tempSliderChanged(sender: UISlider) {
+    @IBAction func tempSliderChanged(_ sender: UISlider) {
         if(tempSliderTimeLastUpdated < -0.1) {
-            tempSliderTimeLastUpdated = NSDate().timeIntervalSince1970
+            tempSliderTimeLastUpdated = Date().timeIntervalSince1970
         }
         else {
-            let now:Double = NSDate().timeIntervalSince1970
+            let now:Double = Date().timeIntervalSince1970
             let delta:Double = now - tempSliderTimeLastUpdated
             if(delta > 1.0) {
                 //radiusSliderLocked = true
@@ -166,49 +166,49 @@ class GoldilocksViewController: UIViewController {
             return;
         }
         tempSliderLastValue = sender.value
-        tempSliderTimeLastUpdated = NSDate().timeIntervalSince1970
+        tempSliderTimeLastUpdated = Date().timeIntervalSince1970
         let sliderValue:Double = Double(sender.value)
         temp = tempSliLog(sliderValue)
         recalculate()
     }
     
-    @IBAction func incrementTemp(sender: UIButton) {
+    @IBAction func incrementTemp(_ sender: UIButton) {
         temp += 1.0
         recalculate()
     }
     
-    @IBAction func decrementTemp(sender: UIButton) {
+    @IBAction func decrementTemp(_ sender: UIButton) {
         temp -= 1.0
         recalculate()
     }
     
-    @IBAction func incrementRadius(sender: UIButton) {
+    @IBAction func incrementRadius(_ sender: UIButton) {
         radius += 0.0001
         recalculate()
     }
     
-    @IBAction func decrementRadius(sender: UIButton) {
+    @IBAction func decrementRadius(_ sender: UIButton) {
         radius -= 0.0001
         recalculate()
     }
     
-    @IBAction func radiusSliderTouchUpInside(sender: UISlider) {
+    @IBAction func radiusSliderTouchUpInside(_ sender: UISlider) {
         radiusSliderTimeLastUpdated = -1.0
     }
     
-    @IBAction func radiusSliderTouchUpOutside(sender: UISlider) {
+    @IBAction func radiusSliderTouchUpOutside(_ sender: UISlider) {
         radiusSliderTimeLastUpdated = -1.0
     }
     
-    @IBAction func tempSliderTouchUpInside(sender: UISlider) {
+    @IBAction func tempSliderTouchUpInside(_ sender: UISlider) {
         tempSliderTimeLastUpdated = -1.0
     }
     
-    @IBAction func tempSliderTouchUpOutside(sender: UISlider) {
+    @IBAction func tempSliderTouchUpOutside(_ sender: UISlider) {
         tempSliderTimeLastUpdated = -1.0
     }
     
-    @IBAction func starClassChanged(sender: UISegmentedControl) {
+    @IBAction func starClassChanged(_ sender: UISegmentedControl) {
         setStarClass(sender.selectedSegmentIndex)
     }
 

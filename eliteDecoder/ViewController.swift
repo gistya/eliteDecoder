@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ewCoord: LeetTextField!
@@ -32,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        if(self.candidatesTable.hidden) {
+        if(self.candidatesTable.isHidden) {
             self.candidates = [];
         }
     }
@@ -40,36 +64,36 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     func csvOutput320x320x80() {
         var csv:String = ""
         
-        for(var y = 0; y < 330; y+=10) {
-            for(var z = 0; z < 330; z+=10) {
-                for(var x = 0; x < 330; x+=10) {
+        for y in 0...330 where y % 10 == 0 {
+            for z in 0...330 where z % 10 == 0 {
+                for x in 0...330 where z % 10 == 0 {
                     let coords = "\(x),\(z),\(y),A"
-                    csv.appendContentsOf("@\(coords): \(Decoder.parse_finder(coords)),")
+                    csv.append("@\(coords): \(Decoder.parse_finder(coords)),")
                 }
             }
-            csv.appendContentsOf("\n")
+            csv.append("\n")
         }
         
         print(csv)
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        candidatesTable.hidden = true
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        candidatesTable.isHidden = true
         self.setDoneButton()
-        self.doneButton.enabled = true
+        self.doneButton.isEnabled = true
         self.doneButton.alpha = 1.0
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeTextField = textField as? LeetTextField
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         /* perform validation on the input fields :D */
         if(textField == ewCoord || textField == udCoord || textField == nsCoord) {
             let validator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]{1,4}")
-            if(validator.evaluateWithObject(string) /* i.e. backspace */) {
+            if(validator.evaluate(with: string) /* i.e. backspace */) {
                 self.find(textField, withNewData: string)
                 return true
             }
@@ -79,7 +103,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         else if(textField == letterCode) {
             let validator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Za-z]{1,1}")
-            if(validator.evaluateWithObject(string) /* i.e. backspace */) {
+            if(validator.evaluate(with: string) /* i.e. backspace */) {
                 self.find(textField, withNewData: string)
                 return true
             }
@@ -95,13 +119,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             let ghStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[G-Hg-h]")
             
             func setKeyboard() {
-                if(textField.text?.characters.count > 5 && candidatesTable.hidden) {
-                    textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                if(textField.text?.characters.count > 5 && candidatesTable.isHidden) {
+                    textField.keyboardType = UIKeyboardType.numbersAndPunctuation
                     textField.resignFirstResponder()
                     textField.becomeFirstResponder()
                 }
-                else if(candidatesTable.hidden) {
-                    textField.keyboardType = UIKeyboardType.Default
+                else if(candidatesTable.isHidden) {
+                    textField.keyboardType = UIKeyboardType.default
                     textField.resignFirstResponder()
                     textField.becomeFirstResponder()
                 }
@@ -124,11 +148,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 setKeyboard()
             }
             
-            func lookup(name:String)->Bool {
+            func lookup(_ name:String)->Bool {
                 let original = self.reverseResult.text!
                 self.reverse(name)
                 var decoded:String = self.reverseResult.text!
-                if(numberValidator.evaluateWithObject(decoded[0])) {
+                if(numberValidator.evaluate(with: decoded[0])) {
                     if(name[6] != "0") {
                         textField.text? = name
                     }
@@ -136,10 +160,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     return true
                 }
                 else if(decoded == "out of bounds for 1280 LY cube") {
-                    self.reverse("\(name.stringByAppendingString("-"))")
+                    self.reverse("\(name + "-")")
                     decoded = self.reverseResult.text!
-                    if(numberValidator.evaluateWithObject(decoded[0])) {
-                        textField.text = name.stringByAppendingString("-")
+                    if(numberValidator.evaluate(with: decoded[0])) {
+                        textField.text = name + "-"
                         self.reverse(name)
                         return true
                     }
@@ -152,7 +176,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 if !(lookup("\(textField.text!)\(string)0")) {
                     let starType:String = string
                     var factor = 128
-                    switch starType.uppercaseString {
+                    switch starType.uppercased() {
                     case "B":
                         factor = factor / 2
                         break
@@ -179,10 +203,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     }
                     let original = textField.text!
                     self.candidates = []
-                    for(var i = 0; i < factor; i++) {
+                    for i in 0 ..< factor {
                         let test = "\(original)\(string)\(i)-"
                         if(lookup(test)) {
-                            self.candidates.insert(textField.text!, atIndex: 0)
+                            self.candidates.insert(textField.text!, at: 0)
                         }
                     }
                     if(self.candidates.count == 1) {
@@ -191,12 +215,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     }
                     else if(candidates.count > 1) {
                         self.tableTitle = "Autocomplete Results"
-                        candidatesTable.hidden = false
+                        candidatesTable.isHidden = false
                         candidatesTable.reloadData()
                         
                         textField.resignFirstResponder()
                         textField.text = original
-                        textField.text?.appendContentsOf(string)
+                        textField.text?.append(string)
                         reverse()
                         return false
                     }
@@ -205,18 +229,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     }
                 }
                 else {
-                    textField.text?.appendContentsOf(string)
+                    textField.text?.append(string)
                     self.reverse(textField.text!)
                     setKeyboard()
                     return false
                 }
             }
             
-            func delete(size:Int) {
-                let start:String.CharacterView.Index.Distance = range.location - size
-                let end:String.CharacterView.Index.Distance = (textField.text?.characters.count)!
-                let rangeToRemove = (textField.text?.startIndex.advancedBy(start))! ..< (textField.text?.startIndex.advancedBy(end))!
-                textField.text?.removeRange(rangeToRemove)
+            func delete(_ size:Int) {
+                let start = range.location - size
+                let end = (textField.text?.characters.count)!
+                let rangeToRemove = (textField.text?.characters.index((textField.text?.startIndex)!, offsetBy: start))! ..< (textField.text?.characters.index((textField.text?.startIndex)!, offsetBy: end))!
+                textField.text?.removeSubrange(rangeToRemove)
             }
             
             /* do some coool autocomplete :D */
@@ -247,7 +271,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                     return autocomplete()
                 case 7:
                     let starType:String = ssName.text![5]
-                    if(efStarValidator.evaluateWithObject(starType)) {
+                    if(efStarValidator.evaluate(with: starType)) {
                         delete(0)
                         reverse()
                     }
@@ -270,43 +294,43 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             
             switch range.location {
             case 0:
-                if(letterValidator.evaluateWithObject(string)) {
+                if(letterValidator.evaluate(with: string)) {
                     return true
                 }
                 return false
             case 1:
-                if(letterValidator.evaluateWithObject(string)) {
-                    textField.text?.appendContentsOf(string + "-")
+                if(letterValidator.evaluate(with: string)) {
+                    textField.text?.append(string + "-")
                 }
                 return false
             case 3:
-                if(letterValidator.evaluateWithObject(string)) {
-                    textField.text?.appendContentsOf(string + " ")
+                if(letterValidator.evaluate(with: string)) {
+                    textField.text?.append(string + " ")
                 }
                 return false
             case 5:
-                if(letterValidator.evaluateWithObject(string)) {
-                    textField.text?.appendContentsOf(string)
+                if(letterValidator.evaluate(with: string)) {
+                    textField.text?.append(string)
                     reverse()
                 }
                 return false
             case 6:
-                if(numberValidator.evaluateWithObject(string)) {
-                    textField.text?.appendContentsOf(string)
+                if(numberValidator.evaluate(with: string)) {
+                    textField.text?.append(string)
                     reverse()
                 }
                 return false
             case 7:
                 let starType:String = ssName.text![5]
                 let firstDigit:Int = Int(ssName.text![6])!
-                if(string == "-" && !(ghStarValidator.evaluateWithObject(starType)
-                                      || (starType.uppercaseString == "E" && firstDigit > 6)
-                                      || (starType.uppercaseString == "F" && firstDigit > 2))) {
-                    textField.text?.appendContentsOf(string)
+                if(string == "-" && !(ghStarValidator.evaluate(with: starType)
+                                      || (starType.uppercased() == "E" && firstDigit > 6)
+                                      || (starType.uppercased() == "F" && firstDigit > 2))) {
+                    textField.text?.append(string)
                     reverse()
                 }
-                else if(numberValidator.evaluateWithObject(string)) {
-                    textField.text?.appendContentsOf(string)
+                else if(numberValidator.evaluate(with: string)) {
+                    textField.text?.append(string)
                     reverse()
                 }
                 return false
@@ -317,7 +341,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
     }
     
-    func find(textField: UITextField, withNewData newData:String) {
+    func find(_ textField: UITextField, withNewData newData:String) {
         let ew = textField == ewCoord ? newData : ewCoord.text!
         let ud = textField == udCoord ? newData : udCoord.text!
         let ns = textField == nsCoord ? newData : nsCoord.text!
@@ -333,42 +357,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func setDoneButton() {
-        if(self.numberValidator.evaluateWithObject(reverseResult.text![0]) && ssName.text!.characters.count > 5) {
+        if(self.numberValidator.evaluate(with: reverseResult.text![0]) && ssName.text!.characters.count > 5) {
             let starType:String = ssName.text![5]
-            if(self.abcValidator.evaluateWithObject(starType)) {
-                self.doneButton.setTitle("       Nearby Zones", forState: UIControlState.Normal);
+            if(self.abcValidator.evaluate(with: starType)) {
+                self.doneButton.setTitle("       Nearby Zones", for: UIControlState());
             }
             else {
-                self.doneButton.setTitle("                           Done", forState: UIControlState.Normal);
+                self.doneButton.setTitle("                           Done", for: UIControlState());
             }
         }
         else {
-            self.doneButton.setTitle("                           Done", forState: UIControlState.Normal);
+            self.doneButton.setTitle("                           Done", for: UIControlState());
         }
     }
     
-    func reverse(text:String) {
+    func reverse(_ text:String) {
         reverseResult.text = Decoder.parse_reverse(text)
         self.setDoneButton()
     }
     
     func findNearbys() {
         let starType:String = ssName.text![5]
-        if(!self.abcValidator.evaluateWithObject(starType)) {
+        if(!self.abcValidator.evaluate(with: starType)) {
             return; //kinda pointless to lookup nearbys for stars with big zones
         }
         let possibleStarTypes:String = "ABCDEFGH"
         self.candidates = [String]()
         for aStarType:Character in possibleStarTypes.characters {
             let myStarType:String = String.init(aStarType)
-            if(myStarType == starType.uppercaseString) {
+            if(myStarType == starType.uppercased()) {
                 continue
             }
             let coords:String = self.reverseResult.text!
-            let rangesArray:[String] = coords.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: ","))
+            let rangesArray:[String] = coords.components(separatedBy: CharacterSet.init(charactersIn: ","))
             var lookupCoords = [String]()
             for range:String in rangesArray {
-                let myRanges:[String] = range.componentsSeparatedByCharactersInSet(NSCharacterSet.init(charactersInString: "-"))
+                let myRanges:[String] = range.components(separatedBy: CharacterSet.init(charactersIn: "-"))
                 let lowRange:Int = Int(myRanges[0])!
                 let hiRange:Int  = Int(myRanges[1])!
                 var diff:Int = hiRange - lowRange
@@ -384,52 +408,52 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             let candidate = Decoder.parse_finder(find)
             candidates.append(candidate)
         }
-        if(Bool(self.candidates.count)) {
+        if(self.candidates.count > 0) {
             self.tableTitle = "Nearby Zones"
-            candidatesTable.hidden = false
+            candidatesTable.isHidden = false
             candidatesTable.reloadData()
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        self.doneButton.enabled = false
+        self.doneButton.isEnabled = false
         self.doneButton.alpha = 0.0
         return true;
     }
     
-    @IBAction func doneButtonPressed(sender: AnyObject) {
+    @IBAction func doneButtonPressed(_ sender: AnyObject) {
         if(self.activeTextField != nil) {
             self.activeTextField?.resignFirstResponder()
             self.activeTextField = nil
         }
-        self.doneButton.enabled = false
+        self.doneButton.isEnabled = false
         self.doneButton.alpha = 0.0
-        if(self.doneButton.titleLabel!.text!.containsString("Nearby Zones")) {
+        if(self.doneButton.titleLabel!.text!.contains("Nearby Zones")) {
             self.findNearbys()
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("whee")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "whee")
         if(cell == nil) {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier:"whee")
+            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier:"whee")
         }
         
         cell!.textLabel!.text = self.candidates[indexPath.row]
         return cell!
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let selection:String = self.candidates[indexPath.row]
-        self.textField(ssName, shouldChangeCharactersInRange:NSRange.init(location: 0, length: self.ssName.text!.characters.count), replacementString: selection)
+        self.textField(ssName, shouldChangeCharactersIn:NSRange.init(location: 0, length: self.ssName.text!.characters.count), replacementString: selection)
         //self.reverse(selection)
-        self.candidatesTable.hidden = true
+        self.candidatesTable.isHidden = true
         self.ssName.becomeFirstResponder()
         return(indexPath)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
             return self.candidates.count
         }
@@ -438,7 +462,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.tableTitle
     }
 }

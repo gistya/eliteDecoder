@@ -16,8 +16,8 @@
 		EE0948DC1C6A2A4100DD918B /* eliteDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */; };
 		EE0948E71C6A2A4100DD918B /* eliteDecoderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */; };
 		EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948F41C6A2A6300DD918B /* Decoder.swift */; };
-		EE0948F71C6B107500DD918B /* Screenshot-Original.png in Resources */ = {isa = PBXBuildFile; fileRef = EE0948F61C6B107500DD918B /* Screenshot-Original.png */; };
 		EE0D352D1CFFC35E004867A7 /* GoldilocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */; };
+		EE7186361EABF85D000CEA4E /* Screenshot-Original.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7186351EABF85D000CEA4E /* Screenshot-Original.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,8 @@
 		EE0948E61C6A2A4100DD918B /* eliteDecoderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eliteDecoderUITests.swift; sourceTree = "<group>"; };
 		EE0948E81C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0948F41C6A2A6300DD918B /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		EE0948F61C6B107500DD918B /* Screenshot-Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screenshot-Original.png"; path = "../../../../../Desktop/Screenshot-Original.png"; sourceTree = "<group>"; };
 		EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldilocksViewController.swift; sourceTree = "<group>"; };
+		EE7186351EABF85D000CEA4E /* Screenshot-Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Original.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 				EE0948C51C6A2A4100DD918B /* ViewController.swift */,
 				EE0948C71C6A2A4100DD918B /* Main.storyboard */,
 				EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */,
-				EE0948F61C6B107500DD918B /* Screenshot-Original.png */,
+				EE7186351EABF85D000CEA4E /* Screenshot-Original.png */,
 				EE0948CD1C6A2A4100DD918B /* Assets.xcassets */,
 				EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */,
 				EE0948D21C6A2A4100DD918B /* Info.plist */,
@@ -205,13 +205,17 @@
 				TargetAttributes = {
 					EE0948BF1C6A2A4100DD918B = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = Y453UXCT86;
+						LastSwiftMigration = 0820;
 					};
 					EE0948D61C6A2A4100DD918B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = EE0948BF1C6A2A4100DD918B;
 					};
 					EE0948E11C6A2A4100DD918B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = EE0948BF1C6A2A4100DD918B;
 					};
 				};
@@ -243,8 +247,8 @@
 			files = (
 				EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */,
 				EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */,
-				EE0948F71C6B107500DD918B /* Screenshot-Original.png in Resources */,
 				EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */,
+				EE7186361EABF85D000CEA4E /* Screenshot-Original.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,10 +419,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y453UXCT86;
 				INFOPLIST_FILE = eliteDecoder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -426,10 +432,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y453UXCT86;
 				INFOPLIST_FILE = eliteDecoder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -441,6 +449,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eliteDecoder.app/eliteDecoder";
 			};
 			name = Debug;
@@ -453,6 +462,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eliteDecoder.app/eliteDecoder";
 			};
 			name = Release;
@@ -464,6 +474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = eliteDecoder;
 				USES_XCTRUNNER = YES;
 			};
@@ -476,6 +487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Physical-Software.eliteDecoderUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = eliteDecoder;
 				USES_XCTRUNNER = YES;
 			};
