@@ -1,5 +1,5 @@
-##eliteDecoder
-####A Companion App for Frontier Developments' Elite Dangerous (game)
+## eliteDecoder
+#### A Companion App for Frontier Developments' Elite Dangerous (game)
 
 This app allows you to input the sector-relative coordinates of any star and get back a letter code name that the procedural engine will have used for that location. It will also show you other nearby sector names.
 
