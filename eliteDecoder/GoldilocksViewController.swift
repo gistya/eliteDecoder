@@ -33,11 +33,6 @@ class GoldilocksViewController: UIViewController {
     var maxRadius:Double = 0.3
     var minRadius:Double = 0.05
     
-    var radiusSliderLastValue:Float = -1.0
-    var tempSliderLastValue:Float = -1.0
-    var radiusSliderTimeLastUpdated:Double = -1.0
-    var tempSliderTimeLastUpdated:Double = -1.0
-    
     /* constants */
     let Sr:Double = 6.955000E+08
     let SB:Double = 5.670367E-08
@@ -85,15 +80,15 @@ class GoldilocksViewController: UIViewController {
     }
     
     func radiusSliLog(_ sliderValue:Double) -> Double {
-    // Input will be between min and max
+        // Input will be between min and max
         let min:Double = 1.0
         let max:Double = 15000.0
     
-    // Output will be between minv and maxv
+        // Output will be between minv and maxv
         let minv:Double = log(minRadius)
         let maxv:Double = log(maxRadius)
     
-    // Adjustment factor
+        // Adjustment factor
         let scale:Double = (maxv - minv) / (max - min)
     
         return exp(minv + (scale * (sliderValue - min)));
@@ -126,47 +121,13 @@ class GoldilocksViewController: UIViewController {
         }
     }
     
-    @IBAction func radiusSliderChanged(_ sender: UISlider) {
-        if(radiusSliderTimeLastUpdated < -0.1) {
-            radiusSliderTimeLastUpdated = Date().timeIntervalSince1970
-        }
-        else {
-            let now:Double = Date().timeIntervalSince1970
-            let delta:Double = now - radiusSliderTimeLastUpdated
-            if(delta > 1.0) {
-                //radiusSliderLocked = true
-                radiusSlider.value = radiusSliderLastValue
-                return
-            }
-        }
-        if(radiusSliderLastValue == sender.value) {
-            return;
-        }
-        radiusSliderLastValue = sender.value
-        radiusSliderTimeLastUpdated = Date().timeIntervalSince1970
+    @IBAction func radiusSliderChanged(_ sender: PHStickySlider) {
         let sliderValue:Double = Double(sender.value)
         radius = radiusSliLog(sliderValue)
         recalculate()
     }
     
-    @IBAction func tempSliderChanged(_ sender: UISlider) {
-        if(tempSliderTimeLastUpdated < -0.1) {
-            tempSliderTimeLastUpdated = Date().timeIntervalSince1970
-        }
-        else {
-            let now:Double = Date().timeIntervalSince1970
-            let delta:Double = now - tempSliderTimeLastUpdated
-            if(delta > 1.0) {
-                //radiusSliderLocked = true
-                tempSlider.value = tempSliderLastValue
-                return
-            }
-        }
-        if(tempSliderLastValue == sender.value) {
-            return;
-        }
-        tempSliderLastValue = sender.value
-        tempSliderTimeLastUpdated = Date().timeIntervalSince1970
+    @IBAction func tempSliderChanged(_ sender: PHStickySlider) {
         let sliderValue:Double = Double(sender.value)
         temp = tempSliLog(sliderValue)
         recalculate()
@@ -192,34 +153,8 @@ class GoldilocksViewController: UIViewController {
         recalculate()
     }
     
-    @IBAction func radiusSliderTouchUpInside(_ sender: UISlider) {
-        radiusSliderTimeLastUpdated = -1.0
-    }
-    
-    @IBAction func radiusSliderTouchUpOutside(_ sender: UISlider) {
-        radiusSliderTimeLastUpdated = -1.0
-    }
-    
-    @IBAction func tempSliderTouchUpInside(_ sender: UISlider) {
-        tempSliderTimeLastUpdated = -1.0
-    }
-    
-    @IBAction func tempSliderTouchUpOutside(_ sender: UISlider) {
-        tempSliderTimeLastUpdated = -1.0
-    }
-    
     @IBAction func starClassChanged(_ sender: UISegmentedControl) {
         setStarClass(sender.selectedSegmentIndex)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

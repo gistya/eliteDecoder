@@ -10,7 +10,6 @@
 		EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948C31C6A2A4100DD918B /* AppDelegate.swift */; };
 		EE0948C61C6A2A4100DD918B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948C51C6A2A4100DD918B /* ViewController.swift */; };
 		EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0948C71C6A2A4100DD918B /* Main.storyboard */; };
-		EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */; };
 		EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0948CD1C6A2A4100DD918B /* Assets.xcassets */; };
 		EE0948D11C6A2A4100DD918B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */; };
 		EE0948DC1C6A2A4100DD918B /* eliteDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948DB1C6A2A4100DD918B /* eliteDecoderTests.swift */; };
@@ -18,6 +17,9 @@
 		EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0948F41C6A2A6300DD918B /* Decoder.swift */; };
 		EE0D352D1CFFC35E004867A7 /* GoldilocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */; };
 		EE7186361EABF85D000CEA4E /* Screenshot-Original.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7186351EABF85D000CEA4E /* Screenshot-Original.png */; };
+		EE8836191F1FE612001F5C38 /* PHStickySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8836181F1FE612001F5C38 /* PHStickySlider.swift */; };
+		EE88361B1F202305001F5C38 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EE88361A1F202305001F5C38 /* README.md */; };
+		EE8836211F20234D001F5C38 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EE8836201F20234D001F5C38 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,6 @@
 		EE0948C31C6A2A4100DD918B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE0948C51C6A2A4100DD918B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EE0948C81C6A2A4100DD918B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eliteDecoder.xcdatamodel; sourceTree = "<group>"; };
 		EE0948CD1C6A2A4100DD918B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE0948D01C6A2A4100DD918B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE0948D21C6A2A4100DD918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +56,9 @@
 		EE0948F41C6A2A6300DD918B /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldilocksViewController.swift; sourceTree = "<group>"; };
 		EE7186351EABF85D000CEA4E /* Screenshot-Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Original.png"; sourceTree = "<group>"; };
+		EE8836181F1FE612001F5C38 /* PHStickySlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHStickySlider.swift; sourceTree = "<group>"; };
+		EE88361A1F202305001F5C38 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EE8836201F20234D001F5C38 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		EE0948B71C6A2A4100DD918B = {
 			isa = PBXGroup;
 			children = (
+				EE8836201F20234D001F5C38 /* LICENSE */,
+				EE88361A1F202305001F5C38 /* README.md */,
 				EE0948C21C6A2A4100DD918B /* eliteDecoder */,
 				EE0948DA1C6A2A4100DD918B /* eliteDecoderTests */,
 				EE0948E51C6A2A4100DD918B /* eliteDecoderUITests */,
@@ -106,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				EE0948C31C6A2A4100DD918B /* AppDelegate.swift */,
+				EE8836181F1FE612001F5C38 /* PHStickySlider.swift */,
 				EE0948C51C6A2A4100DD918B /* ViewController.swift */,
 				EE0948C71C6A2A4100DD918B /* Main.storyboard */,
 				EE0D352C1CFFC35E004867A7 /* GoldilocksViewController.swift */,
@@ -113,7 +120,6 @@
 				EE0948CD1C6A2A4100DD918B /* Assets.xcassets */,
 				EE0948CF1C6A2A4100DD918B /* LaunchScreen.storyboard */,
 				EE0948D21C6A2A4100DD918B /* Info.plist */,
-				EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */,
 				EE0948F41C6A2A6300DD918B /* Decoder.swift */,
 			);
 			path = eliteDecoder;
@@ -200,7 +206,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Jon Gilbert";
 				TargetAttributes = {
 					EE0948BF1C6A2A4100DD918B = {
@@ -249,6 +255,7 @@
 				EE0948CE1C6A2A4100DD918B /* Assets.xcassets in Resources */,
 				EE0948C91C6A2A4100DD918B /* Main.storyboard in Resources */,
 				EE7186361EABF85D000CEA4E /* Screenshot-Original.png in Resources */,
+				EE8836211F20234D001F5C38 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE88361B1F202305001F5C38 /* README.md in Sources */,
 				EE0948C61C6A2A4100DD918B /* ViewController.swift in Sources */,
 				EE0948C41C6A2A4100DD918B /* AppDelegate.swift in Sources */,
 				EE0948F51C6A2A6300DD918B /* Decoder.swift in Sources */,
-				EE0948CC1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld in Sources */,
+				EE8836191F1FE612001F5C38 /* PHStickySlider.swift in Sources */,
 				EE0D352D1CFFC35E004867A7 /* GoldilocksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,8 +353,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -390,8 +400,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,6 +422,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -533,19 +546,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EE0948CA1C6A2A4100DD918B /* eliteDecoder.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */,
-			);
-			currentVersion = EE0948CB1C6A2A4100DD918B /* eliteDecoder.xcdatamodel */;
-			path = eliteDecoder.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = EE0948B81C6A2A4100DD918B /* Project object */;
 }

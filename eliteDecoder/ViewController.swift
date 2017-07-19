@@ -7,8 +7,7 @@
 //
 
 import UIKit
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -20,8 +19,6 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -43,10 +40,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var candidatesTable: UITableView!
     @IBOutlet var infoView: UIView!
-    var tableTitle:String = ""
+    var tableTitle = ""
     var candidates:[String] = []
-    let numberValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[0-9]")
-    let abcValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Ca-c]")
+    let numberValidator = NSPredicate(format:"SELF MATCHES %@","[0-9]")
+    let abcValidator = NSPredicate(format:"SELF MATCHES %@","[A-Ca-c]")
     
     var activeTextField: LeetTextField?
     
@@ -73,7 +70,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             }
             csv.append("\n")
         }
-        
         print(csv)
     }
     
@@ -113,7 +109,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         /* for the reverse function... */
         else {
-            
             let letterValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[A-Za-z]")
             let efStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[E-Fe-f]")
             let ghStarValidator:NSPredicate = NSPredicate(format:"SELF MATCHES %@","[G-Hg-h]")
@@ -321,8 +316,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 }
                 return false
             case 7:
-                let starType:String = ssName.text![5]
-                let firstDigit:Int = Int(ssName.text![6])!
+                let starType = ssName.text![5]
+                let firstDigit = Int(ssName.text![6])!
                 if(string == "-" && !(ghStarValidator.evaluate(with: starType)
                                       || (starType.uppercased() == "E" && firstDigit > 6)
                                       || (starType.uppercased() == "F" && firstDigit > 2))) {
@@ -350,7 +345,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         if(ew == "" || ud == "" || ns == "" || lc == "") {
             finderResult.text = "please enter some coordinates"
         }
-        else if let find:String = "\(ew),\(ud),\(ns),\(lc)" {
+        else {
+            let find = "\(ew),\(ud),\(ns),\(lc)"
             print("finding: \(find)")
             finderResult.text = Decoder.parse_finder(find)
         }
@@ -446,8 +442,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let selection:String = self.candidates[indexPath.row]
-        self.textField(ssName, shouldChangeCharactersIn:NSRange.init(location: 0, length: self.ssName.text!.characters.count), replacementString: selection)
-        //self.reverse(selection)
+        _ = self.textField(ssName, shouldChangeCharactersIn:NSRange.init(location: 0, length: self.ssName.text!.characters.count), replacementString: selection)
         self.candidatesTable.isHidden = true
         self.ssName.becomeFirstResponder()
         return(indexPath)
